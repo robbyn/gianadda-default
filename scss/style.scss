@@ -13,7 +13,7 @@ $default-bg: #FFE5BF;
 $default-color: #402600;
 $thumbs-bg: #402600;
 $thumbs-color: white;
-$header-bg: #0099ff;
+$header-bg: #0099FF;
 $header-color: white;
 $header-btn-bg: #BFE6FF;
 $header-btn-color: #402600;
@@ -148,7 +148,6 @@ header {
     max-height: 70vw;
 }
 .profile {
-    background-color: white;
     padding: 0.5em;
     .chart {
         width: 800px;
@@ -226,9 +225,9 @@ header {
     display: block;
     margin: 0;
     padding: 0 .5em .5em .5em;
-    background: $thumbs-bg;
     color: $thumbs-color;
     figure {
+        background: $default-bg;
         display: inline-block;
         vertical-align: middle;
         margin: .5em 0 0 0;
