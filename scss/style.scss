@@ -3,14 +3,25 @@
 @import "font/fira.css";
 @import "share-colors";
 
-/* the following values must match those in settings.properties */
+/* preview/thumbnail width and height must match those in settings.properties */
 $preview-width: 1024px;
 $preview-height: 768px;
 $thumb-width: 150px;
 $thumb-height: 100px;
 
+$default-bg: #FFE5BF;
+$default-color: #402600;
+$thumbs-bg: #402600;
+$thumbs-color: white;
+$header-bg: #0099ff;
+$header-color: white;
+$header-btn-bg: #BFE6FF;
+$header-btn-color: #402600;
+$footer-link-color: #0099FF;
+
 * {
     font-family: "Fira Sans";
+    color: $default-color;
 }
 html {
     position: relative;
@@ -18,10 +29,16 @@ html {
     padding: 0;
 }
 body {
-    background: #999999;
+    background: $default-bg;
     position: relative;
     margin: 0;
     padding: 0;
+    .content {
+        max-width: 40em;
+        margin: 0 auto;
+        text-align: left;
+        padding: 0.5em;
+    }
 }
 a,a:visited {
     text-decoration: none;
@@ -34,69 +51,13 @@ body>div {
     text-align: center;
     padding: .5em;
 }
-.folders ul {
-    display: block;
-    margin: 0;
-    padding: 0 .5em .5em .5em;
-    background: #0099ff;
-}
-.folders ul li {
-    list-style: none;
-    display: inline-block;
-    margin: .5em 0.25em 0 0.25em;
-    padding: 0;
-    text-indent: 0;
-}
-.folders ul li a {
-    text-decoration: none;
-    color: #203340;
-    display: block;
-    background: #7FCCFF;
-    padding: 0 0.25em;
-}
-.thumbs {
-    text-align: justify;
-    display: block;
-    margin: 0;
-    padding: 0 .5em .5em .5em;
-}
-.thumbs figure {
-    display: inline-block;
-    vertical-align: middle;
-    margin: .5em 0 0 0;
-    padding: 0;
-    border: .5em solid white;
-}
-.thumbs figure figcaption {
-    display: none;
-}
-.thumbs figure img {
-    display: block;
-}
-.preview figure {
-    display: inline-block;
-    margin: 0 auto;
-    padding: .5em;
-    background: white;
-    max-width: 100%;
-}
-.preview figure img {
-    display: block;
-    max-height: $preview-height;
-    max-width: 100%;
-    margin: 0 auto;
-}
 .artist {
     font-weight: bold;
 }
-.map {
-    width: 100%;
-    height: calc(100vh - 32px); /* viewport height minus header height */
-    max-height: 70vw;
-}
 header {
     position: fixed;
-    background: #0099ff;
+    background: $header-bg;
+    color: $header-color;
     margin: 0;
     display: block;
     height: 32px;
@@ -104,151 +65,200 @@ header {
     left: 0;
     right: 0;
     z-index: 2000;
-}
-header h1 {
-    font-weight: bold;
-    font-size: 150%;
-    min-height: 32px;
-    margin: 0;
-    line-height: 32px;
-    text-align: center;
-    color: white;
-    white-space: nowrap;
-    overflow: hidden;
-}
-header .left-btns, header .right-btns {
-    position: absolute;
-    z-index: 2001;
-    top: 50%;
-    margin-top: -16px;
-    padding: 0;
-    width: auto;
-    height: 32px;
-    display: block;
-    background: #0099ff;
-}
-header .left-btns {
-    left: 0.5em;
-}
-header .right-btns {
-    right: 0.5em;
-}
-header a {
-    margin: 0;
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    color: white;
-    font-size: 150%;
-    line-height: 32px;
-    border-radius: 5px;
-}
-header a:hover {
-    background: #7FCCFF;
-}
-header span {
-    display: none;
-}
-footer {
-    padding: 0.5em 0.5em 2.5em 0.5em;
-    text-align: center;
-}
-footer a, footer a:visited {
-    color: #265C7F;
-}
-.body {
-    background-color: #fff6d6;
-}
-.body .content {
-    max-width: 40em;
-    margin: 0 auto;
-    text-align: left;
-    padding: 0.5em;
-}
-.share {
-    padding: 0.5em;
-}
-.share>a {
-    margin: 0 0.125em;
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    font-size: 150%;
-    line-height: 32px;
-    display: inline-block;
-}
-.profile {
-    background-color: white;
-    padding: 0.5em;
-}
-.profile .chart {
-    width: 800px;
-    margin: 0 auto;
-}
-.profile .chart svg {
-    width: 100%;
-    height: 18.75%;
-}
-.profile .summary {
-    width: 400px;
-    margin: 0 auto;
-}
-.profile .summary th {
-    text-align: left;
-    font-weight: normal;
-    font-style: italic;
-}
-.profile .summary td {
-    text-align: right;
-    font-weight: bold;
-    font-style: normal;
-}
-@media all and (max-width: 850px) {
-    .profile .chart {
-        width: 600px;
+    a {
+        margin: 0;
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        color: $header-color;
+        font-size: 150%;
+        line-height: 32px;
+        border-radius: 5px;
+        &:hover {
+            background: $header-btn-bg;
+            color: $header-btn-color;
+        }
     }
-}
-@media all and (max-width: 640px) {
-    .profile .chart {
-        width: 400px;
+    h1 {
+        font-weight: bold;
+        font-size: 150%;
+        min-height: 32px;
+        margin: 0;
+        line-height: 32px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        color: $header-color;
     }
-}
-@media all and (max-width: 450px) {
-    .profile .chart {
-        width: 240px;
+    .left-btns, .right-btns {
+        position: absolute;
+        z-index: 2001;
+        top: 50%;
+        margin-top: -16px;
+        padding: 0;
+        width: auto;
+        height: 32px;
+        display: block;
     }
-    .profile .summary {
-        width: 240px;
-        font-size: 75%;
+    .left-btns {
+        left: 0.5em;
+    }
+    .right-btns {
+        right: 0.5em;
+    }
+    span {
+        display: none;
     }
 }
 #menu {
     position: fixed;
     top: 32px;
     right: 0;
-    background: #0099ff;
+    background: $header-bg;
+    color: $header-color;
     z-index: 2000;
+    ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+        li {
+            display: block;
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+            border-top: 1px solid white;
+            &:first-of-type {
+                border-top: none;
+            }
+        }
+    }
+    a {
+        color: $header-color;
+        display: block;
+        padding: 0.25em 1em;
+        &:hover {
+            background: $header-btn-bg;
+            color: $header-btn-color;
+        }
+    }
 }
-#menu ul {
+.map {
+    width: 100%;
+    height: calc(100vh - 32px); /* viewport height minus header height */
+    max-height: 70vw;
+}
+.profile {
+    background-color: white;
+    padding: 0.5em;
+    .chart {
+        width: 800px;
+        margin: 0 auto;
+        svg {
+            width: 100%;
+            height: 18.75%;
+        }
+        @media all and (max-width: 850px) {
+            width: 600px;
+        }
+        @media all and (max-width: 640px) {
+            width: 400px;
+        }
+        @media all and (max-width: 450px) {
+            width: 240px;
+        }
+    }
+    .summary {
+        width: 400px;
+        margin: 0 auto;
+        th {
+            text-align: left;
+            font-weight: normal;
+            font-style: italic;
+        }
+        td {
+            text-align: right;
+            font-weight: bold;
+            font-style: normal;
+        }
+        @media all and (max-width: 450px) {
+            width: 240px;
+            font-size: 75%;
+        }
+    }
+}
+.folders ul {
     display: block;
     margin: 0;
-    padding: 0;
+    padding: 0 .5em .5em .5em;
+    background: $header-bg;
+    li {
+        list-style: none;
+        display: inline-block;
+        margin: .5em 0.25em 0 0.25em;
+        padding: 0;
+        text-indent: 0;
+        a {
+            text-decoration: none;
+            color: $header-btn-color;
+            display: block;
+            background: $header-btn-bg;
+            padding: 0 0.25em;
+            &:visited, &:hover {
+                background: $header-bg;
+            }
+        }
+    }
 }
-#menu li {
+.share {
+    padding: 0.5em;
+    >a {
+        margin: 0 0.125em;
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        font-size: 150%;
+        line-height: 32px;
+        display: inline-block;
+    }
+}
+.thumbs {
+    text-align: justify;
     display: block;
     margin: 0;
-    padding: 0;
-    text-indent: 0;
-    border-top: 1px solid white;
+    padding: 0 .5em .5em .5em;
+    background: $thumbs-bg;
+    color: $thumbs-color;
+    figure {
+        display: inline-block;
+        vertical-align: middle;
+        margin: .5em 0 0 0;
+        padding: 0;
+        border: .5em solid $thumbs-color;
+        figcaption {
+            display: none;
+        }
+        img {
+            display: block;
+        }
+    }
 }
-#menu li:first-of-type {
-    border-top: none;
+.preview figure {
+    display: inline-block;
+    margin: 0 auto;
+    padding: .5em;
+    background: white;
+    max-width: 100%;
+    img {
+        display: block;
+        max-height: $preview-height;
+        max-width: 100%;
+        margin: 0 auto;
+    }
 }
-#menu a {
-    color: white;
-    display: block;
-    padding: 0.25em 1em;
-}
-#menu a:hover {
-    background: #7FCCFF;
+footer {
+    padding: 0.5em 0.5em 2.5em 0.5em;
+    text-align: center;
+    a, a:visited {
+        color: $footer-link-color;
+    }
 }
