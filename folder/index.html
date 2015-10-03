@@ -145,7 +145,7 @@
             <nav class="folders" id="folders">
                 <ul>
                 #foreach( $sub in $subfolders )
-                <li id="fld$sub.id"><a href="$esc.url($sub.name)/">$esc.html($sub.title)</a></li>
+                <li id="fld$sub.id"><a class="icon-folder" href="$esc.url($sub.name)/">$esc.html($sub.title)</a></li>
                 #end
                 </ul>
             </nav>
