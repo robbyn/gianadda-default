@@ -19,6 +19,8 @@ $header-btn-bg: #BFE6FF;
 $header-btn-color: #402600;
 $footer-link-color: #0099FF;
 
+$icon-link-ext: '\e81a';
+
 * {
     font-family: "Fira Sans";
     color: $default-color;
@@ -204,6 +206,40 @@ header {
             padding: 0 0.25em;
             &:visited, &:hover {
                 background: $header-bg;
+            }
+        }
+    }
+}
+.body {
+    ul {
+        display: block;
+        margin: 0;
+        padding: 0 .5em .5em .5em;
+        background: $header-bg;
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: .5em 0.25em 0 0.25em;
+            padding: 0;
+            text-indent: 0;
+            a {
+                text-decoration: none;
+                color: $header-btn-color;
+                background: $header-btn-bg;
+                padding: 0 0.25em;
+                &:visited, &:hover {
+                    background: $header-bg;
+                }
+                &:after {
+                    content: $icon-link-ext;
+                    font-family: "fontello";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;   
+                    /* Font smoothing. That was taken from TWBS */
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
             }
         }
     }
