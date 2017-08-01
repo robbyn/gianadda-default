@@ -211,7 +211,8 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 var paths, path, tracks, track, markers, marker, bounds, pt,
                         i, j, mapOptions, div, map, builder;
                 var photoIcon = "${base}css/img/photo.png",
-                    trackIcon = "${base}css/img/footprint.png";
+                    trackIcon = "${base}css/img/footprint.png",
+                    folderIcon = "${base}css/img/footprint.png";
                 paths = [
                 #foreach( $track in $tracks )
                     google.maps.geometry.encoding.decodePath("$esc.javascript($track.encoded)"),
@@ -249,7 +250,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                     #if( $fld.bounds )
                     {
                         position: new google.maps.LatLng($fld.bounds.center.lat,$fld.bounds.center.lng),
-                        icon: trackIcon,
+                        icon: folderIcon,
                         info: new google.maps.InfoWindow({
                             content: '<a href="${esc.url($fld.name)}/">${esc.html($fld.title)}</a>',
                         }),
