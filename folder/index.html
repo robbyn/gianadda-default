@@ -5,7 +5,7 @@
 #set( $thumbSize = $conf.dims['thumb-size'] )
 #set( $previewSize = $conf.dims['preview-size'] )
 #set( $subfolders = $folder.subfolders )
-#set( $tracks = $folder.getTracksRecursive(2) )
+#set( $tracks = $folder.getSubtracks(2) )
 #set( $pictures = $folder.pictures )
 #set( $bounds = $folder.bounds )
 #set( $geopics = [] )
@@ -212,7 +212,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                         i, j, mapOptions, div, map, builder;
                 var photoIcon = "${base}css/img/photo.png",
                     trackIcon = "${base}css/img/footprint.png",
-                    folderIcon = "${base}css/img/footprint.png";
+                    folderIcon = "${base}css/img/folder.png";
                 paths = [
                 #foreach( $track in $tracks )
                     google.maps.geometry.encoding.decodePath("$esc.javascript($track.encoded)"),
