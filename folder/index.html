@@ -5,7 +5,7 @@
 #set( $thumbSize = $conf.dims['thumb-size'] )
 #set( $previewSize = $conf.dims['preview-size'] )
 #set( $subfolders = $folder.subfolders )
-#set( $tracks = $folder.tracks )
+#set( $tracks = $folder.getTracksRecursive(2) )
 #set( $pictures = $folder.pictures )
 #set( $bounds = $folder.bounds )
 #set( $geopics = [] )
