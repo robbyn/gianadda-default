@@ -5,7 +5,8 @@
 #set( $thumbSize = $conf.dims['thumb-size'] )
 #set( $previewSize = $conf.dims['preview-size'] )
 #set( $subfolders = $folder.subfolders )
-#set( $tracks = $folder.getSubtracks(2) )
+#set( $tracks = $folder.tracks )
+#set( $subtracks = $folder.getSubtracks(2) )
 #set( $pictures = $folder.pictures )
 #set( $bounds = $folder.bounds )
 #set( $geopics = [] )
@@ -256,6 +257,15 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                         }),
                     },
                     #end
+                #end
+                #foreach( $tr in $subtracks )
+                    {
+                        position: new google.maps.LatLng($tr.center.lat,$tr.center.lng),
+                        icon: trackIcon,
+                        info: new google.maps.InfoWindow({
+                            content: '<a href="${base}${tr.folder.urlPath}/">${esc.html($tr.folder.title)}</a>',
+                        }),
+                    },
                 #end
                 ];
                 for (var i = 0; i < markers.length; ++i) {
