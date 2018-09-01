@@ -193,7 +193,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 </script>
 #end
         #if( $bounds )
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=fr&libraries=geometry"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=${conf["google.browser.key"]}&v=3.exp&sensor=false&language=fr&libraries=geometry"></script>
         <script type="text/javascript">
             function setupAdjust(div, map, bounds) {
                 var oldWidth = div.offsetWidth, oldHeight = div.offsetHeight;
